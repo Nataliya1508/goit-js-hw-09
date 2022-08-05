@@ -2,6 +2,7 @@ import flatpickr from "flatpickr";
 
 import "flatpickr/dist/flatpickr.min.css";
 import Notiflix from 'notiflix';
+import 'notiflix/dist/notiflix-3.2.5.min.css';
 
 const dataStart = document.querySelector('[data-start]');
 const dataDay = document.querySelector('[data-days]');
@@ -24,7 +25,7 @@ const options = {
     //   dataStart.disabled = true;
       if (selectedDates[0] < dateNow) {
           
-          alert("Please choose a date in the future")
+          Notiflix.Notify.failure('Please choose a date in the future')
           return
       }
       const choiceDate = selectedDates[0].getTime()
@@ -34,7 +35,7 @@ const options = {
           const intrvalid = setInterval(() => {
               const currentDate = Date.now();
               const delta = choiceDate - currentDate;
-              console.log(delta)
+            //   console.log(delta)
               dataStart.disabled = true;
               if (delta <= 0) {
                   clearInterval(intrvalid)
